@@ -1,0 +1,66 @@
+5 simple Steps to Setting Up a new django Project called vShop
+
+1. Create a folder (vShop) and cd into the fold. Or Create a new project from inside PyCharm with the name vShop.
+
+2. Install Django on into the folder using the terminal. use the following command,
+$: pip install django~=3.1.0 
+
+3. Next. run the command 
+$: django-admin startproject vShop .
+
+4. Now “migrated,” or "configured", initial database with the followig command
+$: python manage.py migrate
+
+
+5. It's time to run the python server
+$: python3 manage.py runserver
+
+To check if server running, use the link below
+http://127.0.0.1:8000/
+
+Django is setup successfully. Ready to configure and start building.
+
+
+NOW LETS ADD SOME MORE APPS TO THE DEFAULT INSTALLATIOIN
+
+1. User the following command to Add new Apps or to existing projects
+$: python manage.py startapp products.
+
+2. In the views.py file we import HttpResponse module and use it in a new function.
+
+3. Create a new file called urls.py inside the new package folder and map  the view functions in views.py unto it. For as many view you create, remember to map each function to a line of url pattern
+
+# Example shown below:
+# Inside view.py
+
+from django.http import HttpResponse
+from django.shortcuts import render
+
+
+def index(request):
+    return HttpResponse("Hello vShop User - Welcome!")
+
+
+def new(request):
+    return HttpResponse("This is is a page for New products")
+
+
+def categories(request):
+    return HttpResponse("This is a Categories Page")
+
+
+#Inside urls.py
+
+from django.urls import path
+from . import views
+
+
+urlpatterns = [
+    path("", views.index),
+    path("new", views.new),
+    path("categories", views.categories)
+]
+
+4. 
+
+
